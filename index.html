@@ -37,13 +37,11 @@
         .fade-transition { transition: opacity 0.5s ease-in-out; }
         .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* CSS ป้ายเลื่อนสมูธ */
         .marquee-wrapper { width: 100%; overflow: hidden; white-space: nowrap; position: relative; }
         .marquee-text { display: inline-block; padding-left: 100%; animation: marquee 25s linear infinite; }
         .marquee-wrapper:hover .marquee-text { animation-play-state: paused; cursor: default; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* SweetAlert Styling - Brown Theme */
         .swal2-popup { border-radius: 2rem !important; background: #FAF6F0 !important; border: 3px solid #D6BFA5; padding: 2rem !important; }
         .swal2-title { color: #8A5A33 !important; font-family: 'Kanit', sans-serif !important; }
         .swal2-confirm, .swal2-cancel { border-radius: 1.5rem !important; font-family: 'Kanit', sans-serif !important; font-weight: 600 !important; }
@@ -57,7 +55,6 @@
 
     <nav class="glass sticky top-0 z-40 rounded-b-[2rem] mx-2 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            
             <div class="flex items-center gap-3 cursor-pointer hover:scale-105 transition" onclick="navigate('home')">
                 <img id="nav-logo" src="https://img2.pic.in.th/Minako-TH3441e767b6411e5b.png" class="w-11 h-11 rounded-full object-cover border-2 border-white shadow-md" loading="lazy">
                 <span id="nav-title" class="text-2xl font-bold bg-gradient-to-r from-brown-500 to-brown-700 text-gradient fade-transition tracking-wide">sorichard-store</span>
@@ -113,7 +110,6 @@
     </div>
 
     <div id="sidebar-backdrop" onclick="closeMenu()" class="fixed inset-0 bg-black/20 z-40 hidden backdrop-blur-sm transition-opacity"></div>
-
     <div id="sidebar" class="fixed inset-y-0 right-0 w-72 glass shadow-2xl transform translate-x-full transition-transform duration-300 z-50 rounded-l-[2rem]">
         <div class="p-6 flex justify-between items-center border-b border-brown-200/50">
             <h2 class="text-xl font-bold text-brown-600"><i class="fa-solid fa-compass mr-2"></i> เมนูนำทาง</h2>
@@ -121,7 +117,7 @@
         </div>
         <div class="p-5 flex flex-col gap-3 overflow-y-auto hide-scrollbar pb-20">
             <button onclick="navigate('home')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-house w-6 text-brown-400"></i> หน้าหลัก</button>
-            <button onclick="navigateAuth('inbox')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-envelope-open-text w-6 text-brown-400"></i> กล่องข้อความ (รับของ)</button>
+            <button onclick="navigateAuth('inbox')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-envelope-open-text w-6 text-brown-400"></i> กล่องข้อความ</button>
             <button onclick="navigateAuth('history')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-clock-rotate-left w-6 text-brown-400"></i> ประวัติการสั่งซื้อ</button>
             <button onclick="navigateAuth('products')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-gift w-6 text-brown-400"></i> สินค้าทั้งหมด</button>
             <button onclick="navigateAuth('topup')" class="text-left px-5 py-3.5 rounded-[1.5rem] hover:bg-white transition text-gray-700 font-medium shadow-sm border border-transparent hover:border-brown-100"><i class="fa-solid fa-wallet w-6 text-brown-400"></i> เติมเครดิต</button>
@@ -157,7 +153,7 @@
         </div>
 
         <div id="view-inbox" class="view-section hidden max-w-3xl mx-auto">
-            <h2 class="text-2xl font-bold bg-gradient-to-r from-brown-500 to-brown-400 text-gradient mb-6 px-2 text-center"><i class="fa-solid fa-envelope-open-text mr-2"></i> กล่องข้อความ (รับสินค้า)</h2>
+            <h2 class="text-2xl font-bold bg-gradient-to-r from-brown-500 to-brown-400 text-gradient mb-6 px-2 text-center"><i class="fa-solid fa-envelope-open-text mr-2"></i> กล่องข้อความ</h2>
             <div id="inbox-list" class="space-y-4"></div>
         </div>
 
@@ -171,7 +167,7 @@
             
             <div class="flex flex-wrap gap-3 mb-6 bg-white/50 p-2 rounded-full border border-brown-100 w-fit">
                 <button onclick="switchAdminTab('setting')" id="tab-btn-setting" class="admin-tab-active px-6 py-2.5 rounded-full font-medium transition text-sm"><i class="fa-solid fa-sliders mr-2"></i> ตั้งค่าเว็บ</button>
-                <button onclick="switchAdminTab('manage')" id="tab-btn-manage" class="admin-tab-inactive px-6 py-2.5 rounded-full font-medium transition text-sm"><i class="fa-solid fa-boxes-stacked mr-2"></i> จัดการสินค้า/สต๊อก</button>
+                <button onclick="switchAdminTab('manage')" id="tab-btn-manage" class="admin-tab-inactive px-6 py-2.5 rounded-full font-medium transition text-sm"><i class="fa-solid fa-boxes-stacked mr-2"></i> จัดการสินค้า / สต๊อก</button>
             </div>
 
             <div id="admin-tab-setting" class="admin-content glass cute-card p-8">
@@ -187,7 +183,7 @@
                     <input type="text" id="cfg-qr-true" placeholder="URL รูป QR Code ทรูมันนี่วอลเล็ท" class="w-full p-3.5 rounded-[1.5rem] border-2 border-white bg-white/60 focus:bg-white outline-none text-brown-800">
 
                     <div class="md:col-span-2 text-brown-600 font-bold border-b border-brown-200 pb-2 mt-4"><i class="fa-solid fa-bullhorn mr-2"></i> ประกาศเว็บไซต์</div>
-                    <textarea id="cfg-announce" placeholder="ข้อความประกาศ (จะเด้ง Pop-up หน้าเว็บ)" rows="2" class="w-full p-3.5 rounded-[1.5rem] border-2 border-white bg-white/60 focus:bg-white outline-none md:col-span-2 text-brown-800"></textarea>
+                    <textarea id="cfg-announce" placeholder="ข้อความประกาศ (จะเด้ง Pop-up หน้าเว็บเมื่อมีคำใหม่)" rows="2" class="w-full p-3.5 rounded-[1.5rem] border-2 border-white bg-white/60 focus:bg-white outline-none md:col-span-2 text-brown-800"></textarea>
 
                     <div class="md:col-span-2 text-brown-600 font-bold border-b border-brown-200 pb-2 mt-4"><i class="fa-solid fa-address-book mr-2"></i> ติดต่อ & แจ้งเตือน</div>
                     <input type="text" id="cfg-admin-mail" placeholder="อีเมลแอดมิน (รับแจ้งเตือนออเดอร์)" class="w-full p-3.5 rounded-[1.5rem] border-2 border-white bg-white/60 focus:bg-white outline-none md:col-span-2 text-brown-800">
@@ -216,7 +212,7 @@
                                 <option value="สติ๊กเกอร์">สติ๊กเกอร์</option>
                             </select>
                             
-                            <input type="text" id="man-name" required placeholder="ชื่อสินค้า / ชื่อเกม / ลายสติ๊กเกอร์" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700">
+                            <input type="text" id="man-name" required placeholder="ชื่อสินค้า / ชื่อเกม / ชื่อลายสติ๊กเกอร์" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700">
                             <input type="text" id="man-img" required placeholder="URL รูปสินค้า" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700">
                             
                             <div id="game-fields" class="hidden flex gap-2">
@@ -234,7 +230,7 @@
                             <input type="number" id="man-price" required placeholder="ราคาขาย (บาท)" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700">
                             <textarea id="man-detail" rows="2" placeholder="รายละเอียดสินค้า" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700"></textarea>
                             
-                            <textarea id="man-stock" rows="3" placeholder="สต๊อก (1 รหัสต่อ 1 บรรทัด)" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700"></textarea>
+                            <textarea id="man-stock" rows="3" placeholder="สต๊อก (1 รหัสต่อบรรทัด)" class="w-full p-3 rounded-[1rem] outline-none shadow-sm border border-brown-100 text-gray-700"></textarea>
                             
                             <button type="submit" class="w-full bg-brown-400 text-white py-3 rounded-[1rem] font-bold hover:bg-brown-500 transition shadow">
                                 <i class="fa-solid fa-plus mr-1"></i> เพิ่มสินค้า
@@ -244,7 +240,7 @@
                     
                     <div class="bg-white/60 p-5 rounded-[2rem] border-2 border-white">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-bold text-brown-600"><i class="fa-solid fa-boxes-stacked mr-2"></i> สต๊อกสินค้าในร้าน</h3>
+                            <h3 class="font-bold text-brown-600"><i class="fa-solid fa-boxes-stacked mr-2"></i> สินค้าในร้าน</h3>
                         </div>
                         <div id="admin-product-list" class="space-y-3 max-h-[500px] overflow-y-auto hide-scrollbar"></div>
                     </div>
@@ -263,7 +259,7 @@
                     <button type="button" onclick="switchQR('true')" id="btn-qr-true" class="flex-1 py-2 rounded-full text-sm font-bold text-gray-500 hover:bg-brown-100 transition">ทรูมันนี่</button>
                 </div>
 
-                <div class="p-2 bg-white rounded-[2rem] inline-block mb-6 shadow-sm border border-brown-50">
+                <div class="p-2 bg-white rounded-[2rem] inline-block mb-6 shadow-sm border-2 border-brown-50">
                     <img id="display-qr" src="https://via.placeholder.com/250?text=Scan+QR" class="w-48 h-48 rounded-[1.5rem] object-cover" loading="lazy">
                 </div>
                 
@@ -359,7 +355,7 @@
                 if (!response.ok) throw new Error('Network response was not ok');
                 return await response.json();
             } catch (error) { 
-                Swal.close(); // ปิดหน้าต่างโหลดเสมอถ้าพัง
+                Swal.close(); 
                 console.error('API Error:', error);
                 return { status: 'error', message: 'เชื่อมต่อกับระบบหลังบ้านไม่สำเร็จ' }; 
             }
@@ -376,23 +372,27 @@
         };
 
         async function loadStats() {
-            const res = await fetchGAS({action: 'getStats'});
-            if(res && res.status === 'success') {
-                if(document.getElementById('stat-users')) document.getElementById('stat-users').innerText = res.data.users.toLocaleString();
-                if(document.getElementById('stat-topups')) document.getElementById('stat-topups').innerText = res.data.topups.toLocaleString() + " ฿";
-                if(document.getElementById('stat-sales')) document.getElementById('stat-sales').innerText = res.data.sales.toLocaleString() + " ฿";
-                if(document.getElementById('stat-stock')) document.getElementById('stat-stock').innerText = res.data.stock.toLocaleString();
-            }
+            try {
+                const res = await fetchGAS({action: 'getStats'});
+                if(res && res.status === 'success') {
+                    if(document.getElementById('stat-users')) document.getElementById('stat-users').innerText = res.data.users.toLocaleString();
+                    if(document.getElementById('stat-topups')) document.getElementById('stat-topups').innerText = res.data.topups.toLocaleString() + " ฿";
+                    if(document.getElementById('stat-sales')) document.getElementById('stat-sales').innerText = res.data.sales.toLocaleString() + " ฿";
+                    if(document.getElementById('stat-stock')) document.getElementById('stat-stock').innerText = res.data.stock.toLocaleString();
+                }
+            } catch(e) {}
         }
 
         async function fetchRecentGlobalPurchases() {
-            const res = await fetchGAS({ action: 'getRecentGlobalPurchases' });
-            if(res && res.status === 'success' && res.data.length > 0) {
-                let text = res.data.map(item => `ลูกค้า ${item.user} สั่งซื้อ ${item.product} (${timeAgo(item.time)})`).join(" &nbsp;&nbsp;|&nbsp;&nbsp; ");
-                if(document.getElementById('marquee-text')) document.getElementById('marquee-text').innerHTML = text;
-            } else {
-                if(document.getElementById('marquee-text')) document.getElementById('marquee-text').innerText = "ยินดีต้อนรับสู่ร้านค้าของเรา! แหล่งรวมสินค้าราคาถูก";
-            }
+            try {
+                const res = await fetchGAS({ action: 'getRecentGlobalPurchases' });
+                if(res && res.status === 'success' && res.data.length > 0) {
+                    let text = res.data.map(item => `<i class="fa-solid fa-basket-shopping text-brown-400 mr-1"></i> ลูกค้า ${item.user} สั่งซื้อ ${item.product} (${timeAgo(item.time)})`).join(" &nbsp;&nbsp;|&nbsp;&nbsp; ");
+                    if(document.getElementById('marquee-text')) document.getElementById('marquee-text').innerHTML = text;
+                } else {
+                    if(document.getElementById('marquee-text')) document.getElementById('marquee-text').innerText = "ยินดีต้อนรับสู่ร้านค้าของเรา! แหล่งรวมสินค้าราคาถูก";
+                }
+            } catch(e) {}
         }
 
         function toggleMenu() { document.getElementById('sidebar')?.classList.toggle('translate-x-full'); document.getElementById('sidebar-backdrop')?.classList.toggle('hidden'); }
@@ -413,34 +413,37 @@
 
         function requireLogin() { Swal.fire({ title: 'สงวนสิทธิ์สมาชิก', text: 'กรุณาเข้าสู่ระบบก่อนทำรายการนะคะ', icon: 'lock', iconColor: '#A67C52', confirmButtonText: 'ล็อกอิน', confirmButtonColor: '#A67C52', showCancelButton: true }).then((res) => { if(res.isConfirmed) { openModal('login-modal'); } }); }
 
+        // --- 🔴 หัวใจสำคัญของการแก้บัค! ใส่ Try Catch ป้องกันโค้ดรวน ---
         function updateUI() {
-            if(currentUser) {
-                document.getElementById('guest-buttons')?.classList.add('hidden');
-                document.getElementById('guest-badge')?.classList.add('hidden');
-                document.getElementById('user-info')?.classList.remove('hidden');
-                if(document.getElementById('display-user')) document.getElementById('display-user').innerText = currentUser.userid;
-                if(document.getElementById('display-balance')) document.getElementById('display-balance').innerText = parseFloat(currentUser.balance).toFixed(2);
-                document.getElementById('btn-logout')?.classList.remove('hidden');
-                
-                // ตรวจสอบสิทธิ์ (ถ้าเป็นแอดมิน a หรือ b หรือ admin ให้เข้าจัดการระบบได้)
-                if(currentUser.role === 'admin' || currentUser.role === 'b' || currentUser.role === 'a') {
-                    document.getElementById('menu-admin')?.classList.remove('hidden');
-                    if(currentUser.role === 'a') {
-                        document.getElementById('tab-btn-setting')?.classList.add('hidden');
-                        document.getElementById('admin-add-section')?.classList.add('hidden');
-                        switchAdminTab('manage');
-                    } else {
-                        document.getElementById('tab-btn-setting')?.classList.remove('hidden');
-                        document.getElementById('admin-add-section')?.classList.remove('hidden');
+            try {
+                if(currentUser) {
+                    document.getElementById('guest-buttons')?.classList.add('hidden');
+                    document.getElementById('guest-badge')?.classList.add('hidden');
+                    document.getElementById('user-info')?.classList.remove('hidden');
+                    if(document.getElementById('display-user')) document.getElementById('display-user').innerText = currentUser.userid;
+                    if(document.getElementById('display-balance')) document.getElementById('display-balance').innerText = parseFloat(currentUser.balance).toFixed(2);
+                    document.getElementById('btn-logout')?.classList.remove('hidden');
+                    
+                    // สิทธิ์แอดมินและผู้ช่วย
+                    if(currentUser.role === 'admin' || currentUser.role === 'b' || currentUser.role === 'a') {
+                        document.getElementById('menu-admin')?.classList.remove('hidden');
+                        if(currentUser.role === 'a') {
+                            document.getElementById('tab-btn-setting')?.classList.add('hidden');
+                            document.getElementById('admin-add-section')?.classList.add('hidden');
+                            if(typeof switchAdminTab === 'function') switchAdminTab('manage');
+                        } else {
+                            document.getElementById('tab-btn-setting')?.classList.remove('hidden');
+                            document.getElementById('admin-add-section')?.classList.remove('hidden');
+                        }
                     }
+                } else {
+                    document.getElementById('guest-buttons')?.classList.remove('hidden');
+                    document.getElementById('guest-badge')?.classList.remove('hidden');
+                    document.getElementById('user-info')?.classList.add('hidden');
+                    document.getElementById('btn-logout')?.classList.add('hidden');
+                    document.getElementById('menu-admin')?.classList.add('hidden');
                 }
-            } else {
-                document.getElementById('guest-buttons')?.classList.remove('hidden');
-                document.getElementById('guest-badge')?.classList.remove('hidden');
-                document.getElementById('user-info')?.classList.add('hidden');
-                document.getElementById('btn-logout')?.classList.add('hidden');
-                document.getElementById('menu-admin')?.classList.add('hidden');
-            }
+            } catch(e) { console.error("UI Update Safe Skip:", e); }
         }
 
         function switchQR(type) {
@@ -462,38 +465,41 @@
         }
 
         function applySettings() {
-            const inputs = ['cfg-name', 'cfg-logo', 'cfg-banner', 'cfg-banner-link', 'cfg-admin-mail', 'cfg-fb', 'cfg-line', 'cfg-page', 'cfg-mail', 'cfg-pop-title', 'cfg-pop-img', 'cfg-pop-desc', 'cfg-qr', 'cfg-qr-true', 'cfg-announce'];
-            inputs.forEach(id => { if(document.getElementById(id) && appSettings[id]) document.getElementById(id).value = appSettings[id]; });
-            
-            if(appSettings['cfg-logo'] && document.getElementById('nav-logo')) document.getElementById('nav-logo').src = appSettings['cfg-logo'];
-            const nameStr = appSettings['cfg-name'] || 'sorichard-store'; 
-            nameList = nameStr.split(',').map(s => s.trim()).filter(s => s);
-            if(nameList.length > 0) { 
-                if(document.getElementById('nav-title')) document.getElementById('nav-title').innerText = nameList[0]; 
-                if(document.getElementById('footer-name')) document.getElementById('footer-name').innerText = nameList[0]; 
-            }
-            
-            const bannerStr = appSettings['cfg-banner'] || ''; 
-            bannerList = bannerStr.split(',').map(s => s.trim()).filter(s => s);
-            if(bannerList.length > 0 && document.getElementById('main-banner')) document.getElementById('main-banner').src = bannerList[0];
-            
-            if(appSettings['cfg-fb']) { document.getElementById('link-fb')?.href = appSettings['cfg-fb']; document.getElementById('link-fb')?.classList.remove('hidden'); }
-            if(appSettings['cfg-line']) { document.getElementById('link-line')?.href = appSettings['cfg-line']; document.getElementById('link-line')?.classList.remove('hidden'); }
-            if(appSettings['cfg-page']) { document.getElementById('link-page')?.href = appSettings['cfg-page']; document.getElementById('link-page')?.classList.remove('hidden'); }
-            if(appSettings['cfg-mail']) { document.getElementById('link-mail')?.href = appSettings['cfg-mail']; document.getElementById('link-mail')?.classList.remove('hidden'); }
-
-            if(bannerList.length > 1 && document.getElementById('main-banner')) { 
-                setInterval(() => { sliderIdx++; const imgEl = document.getElementById('main-banner'); if(imgEl) { imgEl.style.opacity = 0; setTimeout(() => { imgEl.src = bannerList[sliderIdx % bannerList.length]; imgEl.style.opacity = 1; }, 500); } }, 5000); 
-            }
-
-            if(appSettings['cfg-announce'] && appSettings['cfg-announce'].trim() !== '') {
-                const currentAnnounce = appSettings['cfg-announce'].trim();
-                if(sessionStorage.getItem('last_announce') !== currentAnnounce) {
-                    setTimeout(() => { Swal.fire({ title: '<i class="fa-solid fa-bullhorn mb-2 text-3xl"></i><br>ประกาศจากทางร้าน', text: currentAnnounce, confirmButtonText: 'รับทราบ', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } }); sessionStorage.setItem('last_announce', currentAnnounce); }, 1000);
+            try {
+                const inputs = ['cfg-name', 'cfg-logo', 'cfg-banner', 'cfg-banner-link', 'cfg-admin-mail', 'cfg-fb', 'cfg-line', 'cfg-page', 'cfg-mail', 'cfg-pop-title', 'cfg-pop-img', 'cfg-pop-desc', 'cfg-qr', 'cfg-qr-true', 'cfg-announce'];
+                inputs.forEach(id => { if(document.getElementById(id) && appSettings[id]) document.getElementById(id).value = appSettings[id]; });
+                
+                if(appSettings['cfg-logo'] && document.getElementById('nav-logo')) document.getElementById('nav-logo').src = appSettings['cfg-logo'];
+                const nameStr = appSettings['cfg-name'] || 'sorichard-store'; 
+                nameList = nameStr.split(',').map(s => s.trim()).filter(s => s);
+                if(nameList.length > 0) { 
+                    if(document.getElementById('nav-title')) document.getElementById('nav-title').innerText = nameList[0]; 
+                    if(document.getElementById('footer-name')) document.getElementById('footer-name').innerText = nameList[0]; 
                 }
-            } else if(!sessionStorage.getItem('popShown') && appSettings['cfg-pop-title']) {
-                setTimeout(() => { Swal.fire({ title: appSettings['cfg-pop-title'], text: appSettings['cfg-pop-desc'], imageUrl: appSettings['cfg-pop-img'], imageHeight: 200, confirmButtonText: 'รับทราบ', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } }); sessionStorage.setItem('popShown', 'true'); }, 1000);
-            }
+                
+                const bannerStr = appSettings['cfg-banner'] || ''; 
+                bannerList = bannerStr.split(',').map(s => s.trim()).filter(s => s);
+                if(bannerList.length > 0 && document.getElementById('main-banner')) document.getElementById('main-banner').src = bannerList[0];
+                
+                if(appSettings['cfg-fb']) { document.getElementById('link-fb')?.href = appSettings['cfg-fb']; document.getElementById('link-fb')?.classList.remove('hidden'); }
+                if(appSettings['cfg-line']) { document.getElementById('link-line')?.href = appSettings['cfg-line']; document.getElementById('link-line')?.classList.remove('hidden'); }
+                if(appSettings['cfg-page']) { document.getElementById('link-page')?.href = appSettings['cfg-page']; document.getElementById('link-page')?.classList.remove('hidden'); }
+                if(appSettings['cfg-mail']) { document.getElementById('link-mail')?.href = appSettings['cfg-mail']; document.getElementById('link-mail')?.classList.remove('hidden'); }
+
+                if(bannerList.length > 1 && document.getElementById('main-banner')) { 
+                    setInterval(() => { sliderIdx++; const imgEl = document.getElementById('main-banner'); if(imgEl) { imgEl.style.opacity = 0; setTimeout(() => { imgEl.src = bannerList[sliderIdx % bannerList.length]; imgEl.style.opacity = 1; }, 500); } }, 5000); 
+                }
+
+                // ระบบประกาศ
+                if(appSettings['cfg-announce'] && appSettings['cfg-announce'].trim() !== '') {
+                    const currentAnnounce = appSettings['cfg-announce'].trim();
+                    if(sessionStorage.getItem('last_announce') !== currentAnnounce) {
+                        setTimeout(() => { Swal.fire({ title: '<i class="fa-solid fa-bullhorn mb-2 text-3xl"></i><br>ประกาศจากทางร้าน', text: currentAnnounce, confirmButtonText: 'รับทราบ', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } }); sessionStorage.setItem('last_announce', currentAnnounce); }, 1000);
+                    }
+                } else if(!sessionStorage.getItem('popShown') && appSettings['cfg-pop-title']) {
+                    setTimeout(() => { Swal.fire({ title: appSettings['cfg-pop-title'], text: appSettings['cfg-pop-desc'], imageUrl: appSettings['cfg-pop-img'], imageHeight: 200, confirmButtonText: 'รับทราบ', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } }); sessionStorage.setItem('popShown', 'true'); }, 1000);
+                }
+            } catch(e) {}
         }
 
         function toggleProductForm() {
@@ -590,19 +596,23 @@
                 showCloseButton: true, showCancelButton: true, cancelButtonText: 'ยกเลิก', confirmButtonText: '<i class="fa-solid fa-check ml-1"></i> ชำระเงิน', confirmButtonColor: '#A67C52', cancelButtonColor: '#d1d5db', customClass: { popup: 'rounded-[2rem]' }
             }); 
             if(isConfirmed) {
-                Swal.fire({ title: 'กำลังดำเนินการ...', didOpen: () => Swal.showLoading() }); 
-                const res = await fetchGAS({ action: 'buyProduct', userid: currentUser.userid, productId: p.id, price: p.price, category: p.category, customerData: customerData }); 
-                
-                if(res && res.status === 'success') { 
-                    currentUser.balance = res.newBalance; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
-                    updateUI(); fetchAndRenderProducts(); loadStats();
-                    if(p.category === 'เติมเกม' || p.category === 'สติ๊กเกอร์') {
-                        Swal.fire({ title: 'สำเร็จ! 🎉', text: 'แอดมินได้รับออเดอร์แล้วค่ะ กรุณารอจัดส่งภายใน 5-10 นาทีน้า~', icon: 'success', confirmButtonColor: '#A67C52' });
-                    } else {
-                        Swal.fire({ title: 'สำเร็จ! 🎉', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); 
+                try {
+                    Swal.fire({ title: 'กำลังดำเนินการ...', didOpen: () => Swal.showLoading() }); 
+                    const res = await fetchGAS({ action: 'buyProduct', userid: currentUser.userid, productId: p.id, price: p.price, category: p.category, customerData: customerData }); 
+                    
+                    if(res && res.status === 'success') { 
+                        currentUser.balance = res.newBalance; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
+                        updateUI(); fetchAndRenderProducts(); loadStats();
+                        if(p.category === 'เติมเกม' || p.category === 'สติ๊กเกอร์') {
+                            Swal.fire({ title: 'สำเร็จ!', text: 'แอดมินได้รับออเดอร์แล้วค่ะ กรุณารอจัดส่งภายใน 5-10 นาที', icon: 'success', confirmButtonColor: '#A67C52' });
+                        } else {
+                            Swal.fire({ title: 'สำเร็จ!', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); 
+                        }
+                    } else { 
+                        Swal.fire({ title: 'อุ๊ย!', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
                     }
-                } else { 
-                    Swal.fire({ title: 'อุ๊ย!', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
+                } catch (e) {
+                    Swal.fire({ title: 'อุ๊ย!', text: 'ระบบขัดข้อง กรุณาลองใหม่', icon: 'error', confirmButtonColor: '#A67C52' }); 
                 }
             }
         }
@@ -631,8 +641,10 @@
         }
 
         async function fetchAndRenderProducts() {
-            const resProd = await fetchGAS({action: 'getProducts'});
-            if(resProd && resProd.status === 'success') { appProducts = resProd.data; renderProductsHome(); renderAdminProductList(); }
+            try {
+                const resProd = await fetchGAS({action: 'getProducts'});
+                if(resProd && resProd.status === 'success') { appProducts = resProd.data; renderProductsHome(); renderAdminProductList(); }
+            } catch(e){}
         }
         
         function renderProductsHome() { 
@@ -664,41 +676,50 @@
             const box = document.getElementById('inbox-list'); 
             if(!box) return;
             box.innerHTML = '<div class="text-center py-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-brown-400"></i></div>'; 
-            const res = await fetchGAS({ action: 'getInbox', userid: currentUser.userid }); box.innerHTML = ''; 
-            if(res && res.status === 'success' && res.data.length > 0) {
-                res.data.forEach(msg => { const d = new Date(msg.time); box.innerHTML += `<div class="glass cute-card p-5 bg-white/70 border-2 border-white flex flex-col gap-2"><div class="flex justify-between items-start border-b border-brown-100 pb-2"><h3 class="font-bold text-gray-800"><i class="fa-solid fa-gift text-brown-400 mr-2"></i> ${msg.title}</h3><span class="text-xs text-gray-400">${d.toLocaleString('th-TH')}</span></div><div class="text-brown-700 font-medium bg-brown-50 p-3 rounded-[1rem] whitespace-pre-line text-sm border border-brown-200">${msg.message}</div></div>`; }); 
-            } else { box.innerHTML = '<div class="text-center py-10 text-gray-400"><i class="fa-solid fa-box-open text-3xl mb-2 text-brown-300"></i><br>ยังไม่มีสินค้าในกล่องข้อความค่ะ</div>'; }
+            try {
+                const res = await fetchGAS({ action: 'getInbox', userid: currentUser.userid }); box.innerHTML = ''; 
+                if(res && res.status === 'success' && res.data.length > 0) {
+                    res.data.forEach(msg => { const d = new Date(msg.time); box.innerHTML += `<div class="glass cute-card p-5 bg-white/70 border-2 border-white flex flex-col gap-2"><div class="flex justify-between items-start border-b border-brown-100 pb-2"><h3 class="font-bold text-gray-800"><i class="fa-solid fa-gift text-brown-400 mr-2"></i> ${msg.title}</h3><span class="text-xs text-gray-400">${d.toLocaleString('th-TH')}</span></div><div class="text-brown-700 font-medium bg-brown-50 p-3 rounded-[1rem] whitespace-pre-line text-sm border border-brown-200">${msg.message}</div></div>`; }); 
+                } else { box.innerHTML = '<div class="text-center py-10 text-gray-400"><i class="fa-solid fa-box-open text-3xl mb-2 text-brown-300"></i><br>ยังไม่มีสินค้าในกล่องข้อความค่ะ</div>'; }
+            } catch(e) { box.innerHTML = '<div class="text-center py-10 text-red-400">โหลดข้อมูลไม่สำเร็จ</div>'; }
         }
 
         async function fetchHistory() { 
             const box = document.getElementById('history-list'); 
             if(!box) return;
             box.innerHTML = '<div class="text-center py-10"><i class="fa-solid fa-spinner fa-spin text-2xl text-brown-400"></i></div>'; 
-            const res = await fetchGAS({ action: 'getHistory', userid: currentUser.userid }); box.innerHTML = ''; 
-            if(res && res.status === 'success' && res.data.length > 0) {
-                res.data.forEach(item => { const d = new Date(item.time); box.innerHTML += `<div class="glass cute-card p-4 bg-white/70 border-2 border-white flex justify-between items-center"><div><h3 class="font-bold text-gray-800"><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> ${item.product}</h3><span class="text-xs text-gray-400 ml-6">${d.toLocaleString('th-TH')}</span></div><div class="text-brown-600 font-bold text-lg">${item.price} ฿</div></div>`; }); 
-            } else { box.innerHTML = '<div class="text-center py-10 text-gray-400">ยังไม่มีประวัติการสั่งซื้อค่ะ</div>'; }
+            try {
+                const res = await fetchGAS({ action: 'getHistory', userid: currentUser.userid }); box.innerHTML = ''; 
+                if(res && res.status === 'success' && res.data.length > 0) {
+                    res.data.forEach(item => { const d = new Date(item.time); box.innerHTML += `<div class="glass cute-card p-4 bg-white/70 border-2 border-white flex justify-between items-center"><div><h3 class="font-bold text-gray-800"><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> ${item.product}</h3><span class="text-xs text-gray-400 ml-6">${d.toLocaleString('th-TH')}</span></div><div class="text-brown-600 font-bold text-lg">${item.price} ฿</div></div>`; }); 
+                } else { box.innerHTML = '<div class="text-center py-10 text-gray-400">ยังไม่มีประวัติการสั่งซื้อค่ะ</div>'; }
+            } catch(e) { box.innerHTML = '<div class="text-center py-10 text-red-400">โหลดข้อมูลไม่สำเร็จ</div>'; }
         }
 
-        function switchAdminTab(tab) { ['setting', 'manage'].forEach(t => { document.getElementById('admin-tab-'+t)?.classList.add('hidden'); if(document.getElementById('tab-btn-'+t)) document.getElementById('tab-btn-'+t).className = (t===tab) ? 'admin-tab-active px-6 py-2.5 rounded-full font-bold shadow transition text-sm' : 'admin-tab-inactive px-6 py-2.5 rounded-full font-medium transition text-sm'; }); document.getElementById('admin-tab-'+tab)?.classList.remove('hidden'); }
+        function switchAdminTab(tab) { ['setting', 'manage'].forEach(t => { document.getElementById('admin-tab-'+t)?.classList.add('hidden'); if(document.getElementById('tab-btn-'+t)) { document.getElementById('tab-btn-'+t).className = (t===tab) ? 'admin-tab-active px-6 py-2.5 rounded-full font-bold shadow transition text-sm' : 'admin-tab-inactive px-6 py-2.5 rounded-full font-medium transition text-sm'; } }); document.getElementById('admin-tab-'+tab)?.classList.remove('hidden'); }
         
-        // ------------------ ปุ่มของแอดมิน (ใส่ตัวปิดโหลดกันค้างทั้งหมด) ------------------
         async function saveWebSettings(e) { 
-            e.preventDefault(); Swal.fire({ title: 'กำลังบันทึก...', didOpen: () => Swal.showLoading() }); 
-            const settings = { 'cfg-name': document.getElementById('cfg-name')?.value || '', 'cfg-logo': document.getElementById('cfg-logo')?.value || '', 'cfg-banner': document.getElementById('cfg-banner')?.value || '', 'cfg-banner-link': document.getElementById('cfg-banner-link')?.value || '', 'cfg-admin-mail': document.getElementById('cfg-admin-mail')?.value || '', 'cfg-fb': document.getElementById('cfg-fb')?.value || '', 'cfg-line': document.getElementById('cfg-line')?.value || '', 'cfg-page': document.getElementById('cfg-page')?.value || '', 'cfg-mail': document.getElementById('cfg-mail')?.value || '', 'cfg-pop-title': document.getElementById('cfg-pop-title')?.value || '', 'cfg-pop-img': document.getElementById('cfg-pop-img')?.value || '', 'cfg-pop-desc': document.getElementById('cfg-pop-desc')?.value || '', 'cfg-qr': document.getElementById('cfg-qr')?.value || '', 'cfg-qr-true': document.getElementById('cfg-qr-true')?.value || '', 'cfg-announce': document.getElementById('cfg-announce')?.value || '' }; 
-            const res = await fetchGAS({ action: 'adminSaveSettings', settings: settings }); 
-            if(res && res.status === 'success') { appSettings = settings; applySettings(); Swal.fire({ title: 'สำเร็จ', text: 'บันทึกการตั้งค่าเรียบร้อย', icon: 'success', confirmButtonColor: '#A67C52' }); } 
-            else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'ไม่สามารถบันทึกข้อมูลได้', icon: 'error', confirmButtonColor: '#A67C52' }); }
+            e.preventDefault(); 
+            try {
+                Swal.fire({ title: 'กำลังบันทึก...', didOpen: () => Swal.showLoading() }); 
+                const settings = { 'cfg-name': document.getElementById('cfg-name')?.value || '', 'cfg-logo': document.getElementById('cfg-logo')?.value || '', 'cfg-banner': document.getElementById('cfg-banner')?.value || '', 'cfg-banner-link': document.getElementById('cfg-banner-link')?.value || '', 'cfg-admin-mail': document.getElementById('cfg-admin-mail')?.value || '', 'cfg-fb': document.getElementById('cfg-fb')?.value || '', 'cfg-line': document.getElementById('cfg-line')?.value || '', 'cfg-page': document.getElementById('cfg-page')?.value || '', 'cfg-mail': document.getElementById('cfg-mail')?.value || '', 'cfg-pop-title': document.getElementById('cfg-pop-title')?.value || '', 'cfg-pop-img': document.getElementById('cfg-pop-img')?.value || '', 'cfg-pop-desc': document.getElementById('cfg-pop-desc')?.value || '', 'cfg-qr': document.getElementById('cfg-qr')?.value || '', 'cfg-qr-true': document.getElementById('cfg-qr-true')?.value || '', 'cfg-announce': document.getElementById('cfg-announce')?.value || '' }; 
+                const res = await fetchGAS({ action: 'adminSaveSettings', settings: settings }); 
+                if(res && res.status === 'success') { appSettings = settings; applySettings(); Swal.fire({ title: 'สำเร็จ', text: 'บันทึกการตั้งค่าเรียบร้อย', icon: 'success', confirmButtonColor: '#A67C52' }); } 
+                else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'ไม่สามารถบันทึกข้อมูลได้', icon: 'error', confirmButtonColor: '#A67C52' }); }
+            } catch (e) { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: 'ระบบขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); }
         }
         
         async function saveManualProduct(e) { 
-            e.preventDefault(); Swal.fire({ title: 'กำลังบันทึก...', didOpen: () => Swal.showLoading() }); 
-            const cat = document.getElementById('man-cat')?.value || ''; let finalName = document.getElementById('man-name')?.value || '';
-            if(cat === 'เติมเกม') { let unit = document.getElementById('game-unit')?.value || ''; if(unit === 'อื่นๆ') unit = document.getElementById('game-unit-custom')?.value || ''; finalName = `${finalName} - ${document.getElementById('game-amt')?.value || ''} ${unit}`; }
-            const p = { category: cat, name: finalName, price: document.getElementById('man-price')?.value || '', img: document.getElementById('man-img')?.value || '', details: document.getElementById('man-detail')?.value || '', stockData: document.getElementById('man-stock')?.value || '', type: 'manual' }; 
-            const res = await fetchGAS({ action: 'adminAddProduct', product: p }); 
-            if(res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); e.target.reset(); fetchAndRenderProducts(); loadStats(); toggleProductForm(); } 
-            else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'เพิ่มสินค้าไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); }
+            e.preventDefault(); 
+            try {
+                Swal.fire({ title: 'กำลังบันทึก...', didOpen: () => Swal.showLoading() }); 
+                const cat = document.getElementById('man-cat')?.value || ''; let finalName = document.getElementById('man-name')?.value || '';
+                if(cat === 'เติมเกม') { let unit = document.getElementById('game-unit')?.value || ''; if(unit === 'อื่นๆ') unit = document.getElementById('game-unit-custom')?.value || ''; finalName = `${finalName} - ${document.getElementById('game-amt')?.value || ''} ${unit}`; }
+                const p = { category: cat, name: finalName, price: document.getElementById('man-price')?.value || '', img: document.getElementById('man-img')?.value || '', details: document.getElementById('man-detail')?.value || '', stockData: document.getElementById('man-stock')?.value || '', type: 'manual' }; 
+                const res = await fetchGAS({ action: 'adminAddProduct', product: p }); 
+                if(res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); e.target.reset(); fetchAndRenderProducts(); loadStats(); toggleProductForm(); } 
+                else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'เพิ่มสินค้าไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); }
+            } catch (e) { Swal.fire({ title: 'ข้อผิดพลาด!', text: 'ระบบขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); }
         }
         
         function renderAdminProductList() { 
@@ -709,57 +730,64 @@
                 let stockDisp = p.category === 'แอพพรีเมียม' ? `ว่าง: ${p.stock}` : 'ไม่ต้องใส่สต๊อก';
                 let addStockBtn = p.category === 'แอพพรีเมียม' ? `<button onclick="openAddStockModal('${p.id}', '${p.name}')" class="text-brown-500 bg-brown-50 w-9 h-9 rounded-lg hover:bg-brown-500 hover:text-white transition shadow-sm"><i class="fa-solid fa-plus"></i></button>` : '';
                 let delBtn = (currentUser && (currentUser.role === 'admin' || currentUser.role === 'b')) ? `<button onclick="adminDeleteProduct('${p.id}')" class="text-red-400 bg-red-50 w-9 h-9 rounded-lg hover:bg-red-500 hover:text-white transition shadow-sm"><i class="fa-solid fa-trash"></i></button>` : '';
-                list.innerHTML += `<div class="bg-white p-3 rounded-[1rem] border flex justify-between items-center shadow-sm"><div class="flex gap-3"><img src="${p.image}" class="w-12 h-12 rounded-lg object-cover" loading="lazy"><div class="text-sm font-bold text-brown-800">${p.name}<div class="text-xs text-brown-500">${p.price} ฿ | ${stockDisp}</div></div></div><div class="flex gap-2">${addStockBtn}${delBtn}</div></div>`; 
+                list.innerHTML += `<div class="bg-white p-3 rounded-[1rem] border flex justify-between items-center shadow-sm"><div class="flex gap-3"><img src="${p.image}" class="w-12 h-12 rounded-lg object-cover" loading="lazy"><div class="text-sm font-bold text-gray-800">${p.name}<div class="text-xs text-brown-500">${p.price} ฿ | ${stockDisp}</div></div></div><div class="flex gap-2">${addStockBtn}${delBtn}</div></div>`; 
             }); 
         }
 
         async function openAddStockModal(id, name) {
-            const { value: text } = await Swal.fire({ title: `เพิ่มสต๊อก: ${name}`, input: 'textarea', inputLabel: '1 รหัส ต่อ 1 บรรทัด', inputPlaceholder: 'รหัสที่ 1\nรหัสที่ 2...', showCancelButton: true, confirmButtonText: 'บันทึก', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } });
+            const { value: text } = await Swal.fire({ title: `เพิ่มสต๊อก: ${name}`, input: 'textarea', inputLabel: '1 รหัส ต่อ 1 บรรทัด', inputPlaceholder: 'รหัสที่ 1\nรหัสที่ 2...', showCloseButton: true, showCancelButton: true, cancelButtonText: 'ยกเลิก', confirmButtonText: 'บันทึก', confirmButtonColor: '#A67C52', customClass: { popup: 'rounded-[2rem]' } });
             if (text) { 
-                Swal.fire({ title: 'กำลังเพิ่มสต๊อก...', didOpen: () => Swal.showLoading() }); 
-                const res = await fetchGAS({ action: 'adminAddStockExisting', productId: id, stockData: text }); 
-                if (res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); fetchAndRenderProducts(); loadStats(); } 
-                else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'เพิ่มสต๊อกไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+                try {
+                    Swal.fire({ title: 'กำลังเพิ่มสต๊อก...', didOpen: () => Swal.showLoading() }); 
+                    const res = await fetchGAS({ action: 'adminAddStockExisting', productId: id, stockData: text }); 
+                    if (res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); fetchAndRenderProducts(); loadStats(); } 
+                    else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'เพิ่มสต๊อกไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+                } catch(e) { Swal.fire({ title: 'ข้อผิดพลาด!', text: 'ระบบขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); }
             }
         }
         
         async function adminDeleteProduct(id) { 
-            const { isConfirmed } = await Swal.fire({ title: 'ลบสินค้านี้?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'ลบทิ้ง', customClass: { popup: 'rounded-[2rem]' } }); 
+            const { isConfirmed } = await Swal.fire({ title: 'ลบสินค้านี้?', icon: 'warning', showCloseButton: true, showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'ลบทิ้ง', cancelButtonText: 'ยกเลิก', customClass: { popup: 'rounded-[2rem]' } }); 
             if (isConfirmed) { 
-                Swal.fire({ title: 'กำลังลบ...', didOpen: () => Swal.showLoading() }); 
-                const res = await fetchGAS({ action: 'adminDeleteProduct', productId: id }); 
-                if(res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); fetchAndRenderProducts(); loadStats(); } 
-                else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'ลบไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+                try {
+                    Swal.fire({ title: 'กำลังลบ...', didOpen: () => Swal.showLoading() }); 
+                    const res = await fetchGAS({ action: 'adminDeleteProduct', productId: id }); 
+                    if(res && res.status === 'success') { Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); fetchAndRenderProducts(); loadStats(); } 
+                    else { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'ลบไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+                } catch(e) { Swal.fire({ title: 'ข้อผิดพลาด!', text: 'ระบบขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); }
             } 
         }
 
-        // ------------------ ปุ่มเข้าสู่ระบบ (รับประกันว่าหยุดหมุนแน่นอน) ------------------
+        // ------------------ ปุ่มเข้าสู่ระบบ (รันปลอดภัย 100%) ------------------
         async function handleLogin(e) { 
             e.preventDefault(); 
-            Swal.fire({ title: 'กำลังโหลด...', didOpen:()=>Swal.showLoading() }); 
-            const res = await fetchGAS({action:'login', loginId:document.getElementById('login-id').value, password:document.getElementById('login-pass').value}); 
-            if(res && res.status==='success') { 
-                currentUser=res.user; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
-                closeModal('login-modal'); updateUI(); renderProductsHome(); 
-                Swal.fire({ title: 'สำเร็จ', text: 'เข้าสู่ระบบสำเร็จ', icon: 'success', confirmButtonColor: '#A67C52', timer: 1500 }); 
-            } else { 
-                Swal.fire({ title: 'เข้าสู่ระบบไม่สำเร็จ', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
-            } 
+            try {
+                Swal.fire({ title: 'กำลังโหลด...', didOpen:()=>Swal.showLoading() }); 
+                const res = await fetchGAS({action:'login', loginId:document.getElementById('login-id').value, password:document.getElementById('login-pass').value}); 
+                if(res && res.status==='success') { 
+                    currentUser=res.user; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
+                    closeModal('login-modal'); updateUI(); renderProductsHome(); 
+                    Swal.fire({ title: 'สำเร็จ', text: 'เข้าสู่ระบบสำเร็จ', icon: 'success', confirmButtonColor: '#A67C52', timer: 1500 }); 
+                } else { 
+                    Swal.fire({ title: 'เข้าสู่ระบบไม่สำเร็จ', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
+                } 
+            } catch(error) { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: 'ระบบขัดข้อง กรุณาลองใหม่', icon: 'error', confirmButtonColor: '#A67C52' }); }
         }
         
         async function handleRegister(e) { 
             e.preventDefault(); 
             const pass = document.getElementById('reg-pass').value; 
             if(pass !== document.getElementById('reg-confirm').value) { Swal.fire({ title: 'แจ้งเตือน', text: 'รหัสผ่านไม่ตรงกัน', icon: 'warning', confirmButtonColor: '#A67C52' }); return; } 
-            Swal.fire({ title: 'กำลังโหลด...', didOpen:()=>Swal.showLoading() }); 
-            const res = await fetchGAS({action:'register', userid:document.getElementById('reg-id').value, email:document.getElementById('reg-email').value, password:pass}); 
-            if(res && res.status==='success') { 
-                currentUser=res.user; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
-                closeModal('register-modal'); updateUI(); renderProductsHome(); loadStats(); 
-                Swal.fire({ title: 'สำเร็จ', text: 'สมัครสมาชิกสำเร็จ', icon: 'success', confirmButtonColor: '#A67C52' }); 
-            } else { 
-                Swal.fire({ title: 'สมัครไม่สำเร็จ', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
-            } 
+            
+            try {
+                Swal.fire({ title: 'กำลังโหลด...', didOpen:()=>Swal.showLoading() }); 
+                const res = await fetchGAS({action:'register', userid:document.getElementById('reg-id').value, email:document.getElementById('reg-email').value, password:pass}); 
+                if(res && res.status==='success') { 
+                    currentUser=res.user; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
+                    closeModal('register-modal'); updateUI(); renderProductsHome(); loadStats(); 
+                    Swal.fire({ title: 'สำเร็จ', text: 'สมัครสมาชิกสำเร็จ', icon: 'success', confirmButtonColor: '#A67C52' }); 
+                } else { Swal.fire({ title: 'สมัครไม่สำเร็จ', text: res ? res.message : 'ข้อมูลซ้ำหรือเชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+            } catch(error) { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: 'ระบบขัดข้อง กรุณาลองใหม่', icon: 'error', confirmButtonColor: '#A67C52' }); }
         }
         
         function logout() { localStorage.removeItem('user_session'); currentUser=null; updateUI(); renderProductsHome(); navigate('home'); }
@@ -769,15 +797,15 @@
             const file = document.getElementById('topup-slip').files[0]; 
             const reader = new FileReader(); 
             reader.onload = async () => { 
-                Swal.fire({ title: 'กำลังอัปโหลด...', didOpen:()=>Swal.showLoading() }); 
-                const res = await fetchGAS({action:'topup', userid:currentUser.userid, amount:document.getElementById('topup-amount').value, last6:document.getElementById('topup-last6').value.toUpperCase(), image:reader.result}); 
-                if(res && res.status==='success') { 
-                    currentUser.balance=res.newBalance; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
-                    updateUI(); loadStats(); e.target.reset(); 
-                    Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); 
-                } else { 
-                    Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: res ? res.message : 'เชื่อมต่อขัดข้อง', icon: 'error', confirmButtonColor: '#A67C52' }); 
-                } 
+                try {
+                    Swal.fire({ title: 'กำลังอัปโหลด...', didOpen:()=>Swal.showLoading() }); 
+                    const res = await fetchGAS({action:'topup', userid:currentUser.userid, amount:document.getElementById('topup-amount').value, last6:document.getElementById('topup-last6').value.toUpperCase(), image:reader.result}); 
+                    if(res && res.status==='success') { 
+                        currentUser.balance=res.newBalance; localStorage.setItem('user_session', JSON.stringify(currentUser)); 
+                        updateUI(); loadStats(); e.target.reset(); 
+                        Swal.fire({ title: 'สำเร็จ', text: res.message, icon: 'success', confirmButtonColor: '#A67C52' }); 
+                    } else { Swal.fire({ title: 'แจ้งเตือน', text: res ? res.message : 'ทำรายการไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); } 
+                } catch(error) { Swal.fire({ title: 'เกิดข้อผิดพลาด!', text: 'อัปโหลดไม่สำเร็จ', icon: 'error', confirmButtonColor: '#A67C52' }); }
             }; 
             reader.readAsDataURL(file); 
         }
