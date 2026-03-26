@@ -22,7 +22,7 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Kanit', 'sans-serif'] },
-                    colors: { softpink: '#fce7f3', softblue: '#e0f2fe', primary: '#ec4899', secondary: '#0ea5e9' }
+                    colors: { softpink: '#fce7f3', softblue: '#e0f2fe', primary: '#ec4899', secondary: '#0ea5e9', coin: '#f59e0b' }
                 }
             }
         }
@@ -37,6 +37,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .loader { border: 3px solid #f3f3f3; border-top: 3px solid #ec4899; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; }
         .loader-blue { border-top-color: #0ea5e9; }
+        .loader-coin { border-top-color: #f59e0b; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
@@ -115,6 +116,13 @@
                         <p class="text-xs text-gray-500 mb-1">ออเดอร์ (Orders)</p>
                         <h3 id="so-orders" class="text-2xl font-bold text-primary">-</h3>
                     </div>
+                    <div class="bg-amber-50 p-4 rounded-3xl shadow-sm border-l-4 border-coin col-span-2 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">ยอดเติมรวมทั้งหมด</p>
+                            <h3 id="so-total-credit" class="text-2xl font-bold text-coin">-</h3>
+                        </div>
+                        <i class="fa-solid fa-coins text-3xl text-coin/30"></i>
+                    </div>
                     <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-pink-300">
                         <p class="text-xs text-gray-500 mb-1">สินค้า (Products)</p>
                         <h3 id="so-products" class="text-lg font-bold text-pink-400">-</h3>
@@ -137,8 +145,15 @@
                         <p class="text-xs text-gray-500 mb-1">ออเดอร์ (Orders)</p>
                         <h3 id="king-orders" class="text-2xl font-bold text-secondary">-</h3>
                     </div>
+                    <div class="bg-amber-50 p-4 rounded-3xl shadow-sm border-l-4 border-coin col-span-2 flex justify-between items-center">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">ยอดเติมรวมทั้งหมด</p>
+                            <h3 id="king-total-credit" class="text-2xl font-bold text-coin">-</h3>
+                        </div>
+                        <i class="fa-solid fa-coins text-3xl text-coin/30"></i>
+                    </div>
                     <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-blue-300 col-span-2">
-                        <p class="text-xs text-gray-500 mb-1">ประวัติเครดิต (Credit Log)</p>
+                        <p class="text-xs text-gray-500 mb-1">ประวัติการทำรายการ (Credit Log)</p>
                         <h3 id="king-credits" class="text-lg font-bold text-blue-400">-</h3>
                     </div>
                 </div>
@@ -192,7 +207,6 @@
     </nav>
 
     <script>
-        // ใส่ URL ที่ได้จาก Google Apps Script ที่นี่
         const API_URL = "https://script.google.com/macros/s/AKfycbwZi5TkBXTtISRBU1Jvxi4LMqRF5EDUm_7NApd8Z9tQAEPZXgQElmdZAgvmXgbu_wbVXA/exec"; 
         
         let globalTeams = [];
@@ -276,9 +290,11 @@
         async function loadDashboard() {
             const soIds = ['so-users', 'so-orders', 'so-products', 'so-msgs'];
             const kingIds = ['king-users', 'king-orders', 'king-credits'];
+            const coinIds = ['so-total-credit', 'king-total-credit'];
             
             soIds.forEach(id => document.getElementById(id).innerHTML = '<span class="loader"></span>');
             kingIds.forEach(id => document.getElementById(id).innerHTML = '<span class="loader loader-blue"></span>');
+            coinIds.forEach(id => document.getElementById(id).innerHTML = '<span class="loader loader-coin"></span>');
             
             const res = await apiCall('getDashboard');
             if (res && res.status === 'success') {
@@ -286,12 +302,16 @@
                 document.getElementById('so-orders').innerText = res.data.so.orders;
                 document.getElementById('so-products').innerText = res.data.so.products;
                 document.getElementById('so-msgs').innerText = res.data.so.messages;
+                // แสดงยอดรวมพร้อมลูกน้ำ (,)
+                document.getElementById('so-total-credit').innerText = `฿${res.data.so.totalCredit.toLocaleString('th-TH')}`;
 
                 document.getElementById('king-users').innerText = res.data.king.users;
                 document.getElementById('king-orders').innerText = res.data.king.orders;
                 document.getElementById('king-credits').innerText = res.data.king.creditLog;
+                // แสดงยอดรวมพร้อมลูกน้ำ (,)
+                document.getElementById('king-total-credit').innerText = `฿${res.data.king.totalCredit.toLocaleString('th-TH')}`;
             } else {
-                [...soIds, ...kingIds].forEach(id => document.getElementById(id).innerText = "Error");
+                [...soIds, ...kingIds, ...coinIds].forEach(id => document.getElementById(id).innerText = "Error");
             }
         }
 
