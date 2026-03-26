@@ -11,7 +11,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="apple-touch-icon" href="https://img1.pic.in.th/images/quality_restoration_256903162035100561f6c839e7773145a.png">
     <link rel="icon" href="https://img1.pic.in.th/images/quality_restoration_256903162035100561f6c839e7773145a.png">
-    
     <link id="manifest-link" rel="manifest">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,8 +35,8 @@
         .page-content { display: none; animation: fadeIn 0.3s ease-in-out; }
         .page-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        /* Loader */
         .loader { border: 3px solid #f3f3f3; border-top: 3px solid #ec4899; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; }
+        .loader-blue { border-top-color: #0ea5e9; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
@@ -61,7 +60,7 @@
             <div class="text-secondary text-4xl mb-4"><i class="fa-solid fa-mobile-screen-button"></i></div>
             <h2 class="text-lg font-bold mb-2">แนะนำการใช้งาน</h2>
             <p class="text-sm text-gray-600 mb-4 text-left">
-                1. หากเปิดจาก Line/FB ให้กด <b>คัดลอกลิงก์</b> ไปเปิดในเบราว์เซอร์ปกติ (Chrome/Safari)<br>
+                1. หากเปิดจาก Line หรือแอปอื่น ให้กด <b>คัดลอกลิงก์</b> ไปเปิดในเบราว์เซอร์ปกติ<br>
                 2. เพื่อความสะดวก กดเมนู <i class="fa-solid fa-arrow-up-from-bracket mx-1"></i> หรือ <i class="fa-solid fa-ellipsis-vertical mx-1"></i> แล้วเลือก <b>"เพิ่มลงหน้าจอโฮม"</b> เพื่อใช้งานแบบแอพ
             </p>
             <button onclick="copyAppLink()" class="w-full bg-secondary text-white rounded-xl py-3 mb-2 font-medium">
@@ -104,20 +103,48 @@
 
     <main class="p-4 max-w-md mx-auto">
         <div id="page-1" class="page-content active">
-            <h2 class="text-xl font-bold mb-4 text-gray-700"><i class="fa-solid fa-chart-pie text-secondary mr-2"></i> ภาพรวมร้านค้า</h2>
-            <div class="grid grid-cols-2 gap-4 mb-6">
-                <div class="bg-white p-5 rounded-3xl shadow-sm text-center border-b-4 border-primary">
-                    <p class="text-xs text-gray-500 mb-1">ร้านคุณโซ</p>
-                    <h3 id="dash-so-count" class="text-3xl font-bold text-primary">-</h3>
-                    <p class="text-[10px] text-gray-400">รายการบันทึก</p>
-                </div>
-                <div class="bg-white p-5 rounded-3xl shadow-sm text-center border-b-4 border-secondary">
-                    <p class="text-xs text-gray-500 mb-1">ร้าน KINGADS</p>
-                    <h3 id="dash-king-count" class="text-3xl font-bold text-secondary">-</h3>
-                    <p class="text-[10px] text-gray-400">รายการบันทึก</p>
+            
+            <div class="mb-6">
+                <h2 class="text-lg font-bold mb-3 text-gray-700"><i class="fa-solid fa-store text-primary mr-2"></i> ร้านคุณโซ</h2>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-primary">
+                        <p class="text-xs text-gray-500 mb-1">ผู้ใช้งาน (Users)</p>
+                        <h3 id="so-users" class="text-2xl font-bold text-primary">-</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-primary">
+                        <p class="text-xs text-gray-500 mb-1">ออเดอร์ (Orders)</p>
+                        <h3 id="so-orders" class="text-2xl font-bold text-primary">-</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-pink-300">
+                        <p class="text-xs text-gray-500 mb-1">สินค้า (Products)</p>
+                        <h3 id="so-products" class="text-lg font-bold text-pink-400">-</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-pink-300">
+                        <p class="text-xs text-gray-500 mb-1">ข้อความ (Messages)</p>
+                        <h3 id="so-msgs" class="text-lg font-bold text-pink-400">-</h3>
+                    </div>
                 </div>
             </div>
-            <button onclick="loadDashboard()" class="w-full bg-softblue text-secondary rounded-xl py-3 font-medium text-sm">
+
+            <div class="mb-6">
+                <h2 class="text-lg font-bold mb-3 text-gray-700"><i class="fa-solid fa-crown text-secondary mr-2"></i> ร้าน KINGADS</h2>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-secondary">
+                        <p class="text-xs text-gray-500 mb-1">ผู้ใช้งาน (Users)</p>
+                        <h3 id="king-users" class="text-2xl font-bold text-secondary">-</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-secondary">
+                        <p class="text-xs text-gray-500 mb-1">ออเดอร์ (Orders)</p>
+                        <h3 id="king-orders" class="text-2xl font-bold text-secondary">-</h3>
+                    </div>
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border-l-4 border-blue-300 col-span-2">
+                        <p class="text-xs text-gray-500 mb-1">ประวัติเครดิต (Credit Log)</p>
+                        <h3 id="king-credits" class="text-lg font-bold text-blue-400">-</h3>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="loadDashboard()" class="w-full bg-softblue text-secondary rounded-xl py-3 font-medium text-sm shadow-sm hover:bg-blue-100 transition">
                 <i class="fa-solid fa-rotate-right mr-2"></i> รีเฟรชข้อมูล
             </button>
         </div>
@@ -137,8 +164,7 @@
             </div>
 
             <h2 class="text-lg font-bold mb-4 text-gray-700"><i class="fa-solid fa-user-plus text-secondary mr-2"></i> เพิ่มลูกทีม (ล่าสุด)</h2>
-            <div id="recent-teams-container" class="space-y-3 pb-4">
-                </div>
+            <div id="recent-teams-container" class="space-y-3 pb-4"></div>
         </div>
 
         <div id="page-3" class="page-content">
@@ -146,8 +172,7 @@
                 <span><i class="fa-solid fa-layer-group text-primary mr-2"></i> ทีมทั้งหมด</span>
                 <button onclick="loadTeams()" class="text-xs bg-white py-1 px-3 rounded-full shadow-sm text-secondary"><i class="fa-solid fa-rotate"></i> อัปเดต</button>
             </h2>
-            <div id="all-teams-container" class="space-y-3">
-                </div>
+            <div id="all-teams-container" class="space-y-3"></div>
         </div>
     </main>
 
@@ -167,12 +192,11 @@
     </nav>
 
     <script>
-        // ================= CONFIGURATION =================
+        // ใส่ URL ที่ได้จาก Google Apps Script ที่นี่
         const API_URL = "https://script.google.com/macros/s/AKfycbwZi5TkBXTtISRBU1Jvxi4LMqRF5EDUm_7NApd8Z9tQAEPZXgQElmdZAgvmXgbu_wbVXA/exec"; 
         
         let globalTeams = [];
 
-        // PWA Setup (Single File Hack)
         const manifestStr = JSON.stringify({
             "name": "So Richard", "short_name": "So Richard", "start_url": ".", "display": "standalone",
             "background_color": "#fce7f3", "theme_color": "#ec4899",
@@ -180,7 +204,6 @@
         });
         document.getElementById('manifest-link').href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(manifestStr);
 
-        // ================= AUTH & BROWSER CHECK =================
         window.onload = () => {
             if (sessionStorage.getItem('so_auth') === 'true') {
                 document.getElementById('auth-screen').style.display = 'none';
@@ -205,7 +228,6 @@
             const ua = navigator.userAgent || navigator.vendor || window.opera;
             const isInApp = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("Line") > -1) || (ua.indexOf("Instagram") > -1);
             if (isInApp || !window.matchMedia('(display-mode: standalone)').matches) {
-                // Show recommendation popup briefly if not installed
                 setTimeout(() => document.getElementById('pwa-warning').classList.remove('hidden'), 2000);
             }
         }
@@ -215,12 +237,11 @@
             showPopup("คัดลอกแล้ว", "นำลิงก์ไปเปิดในเบราว์เซอร์ Chrome หรือ Safari ได้เลยครับ", "fa-solid fa-check-circle text-green-500");
         }
 
-        // ================= CORE API & UI LOGIC =================
         async function apiCall(action, data = {}) {
             try {
                 const res = await fetch(API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // text/plain เพื่อเลี่ยง Preflight CORS
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify({ action, data })
                 });
                 return await res.json();
@@ -252,22 +273,28 @@
             if(tabNum === 3) loadTeams();
         }
 
-        // --- Page 1 : Dashboard ---
         async function loadDashboard() {
-            const soEl = document.getElementById('dash-so-count');
-            const kingEl = document.getElementById('dash-king-count');
-            soEl.innerHTML = '<span class="loader"></span>'; kingEl.innerHTML = '<span class="loader"></span>';
+            const soIds = ['so-users', 'so-orders', 'so-products', 'so-msgs'];
+            const kingIds = ['king-users', 'king-orders', 'king-credits'];
+            
+            soIds.forEach(id => document.getElementById(id).innerHTML = '<span class="loader"></span>');
+            kingIds.forEach(id => document.getElementById(id).innerHTML = '<span class="loader loader-blue"></span>');
             
             const res = await apiCall('getDashboard');
             if (res && res.status === 'success') {
-                soEl.innerText = res.data.so.length || 0;
-                kingEl.innerText = res.data.king.length || 0;
+                document.getElementById('so-users').innerText = res.data.so.users;
+                document.getElementById('so-orders').innerText = res.data.so.orders;
+                document.getElementById('so-products').innerText = res.data.so.products;
+                document.getElementById('so-msgs').innerText = res.data.so.messages;
+
+                document.getElementById('king-users').innerText = res.data.king.users;
+                document.getElementById('king-orders').innerText = res.data.king.orders;
+                document.getElementById('king-credits').innerText = res.data.king.creditLog;
             } else {
-                soEl.innerText = "Error"; kingEl.innerText = "Error";
+                [...soIds, ...kingIds].forEach(id => document.getElementById(id).innerText = "Error");
             }
         }
 
-        // --- Page 2 : Save Team & Add Sub Email ---
         async function submitTeam(e) {
             e.preventDefault();
             const btn = document.getElementById('btn-save-team');
@@ -282,9 +309,9 @@
 
             const res = await apiCall('saveTeam', data);
             if (res && res.status === 'success') {
-                showPopup("สำเร็จ!", "บันทึกทีมใหม่เรียบร้อยแล้ว", "fa-solid fa-check-circle text-green-500");
+                showPopup("สำเร็จ", "บันทึกทีมใหม่เรียบร้อยแล้ว", "fa-solid fa-check-circle text-green-500");
                 document.getElementById('team-form').reset();
-                loadTeams(); // reload teams for the recent section
+                loadTeams();
             }
             btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-save mr-2"></i> บันทึกข้อมูล';
         }
@@ -298,7 +325,7 @@
 
             const res = await apiCall('addSubEmail', { teamId, subEmail: input.value });
             if (res && res.status === 'success') {
-                showPopup("สำเร็จ!", "เพิ่มลูกทีมเรียบร้อยแล้ว", "fa-solid fa-check-circle text-green-500");
+                showPopup("สำเร็จ", "เพิ่มลูกทีมเรียบร้อยแล้ว", "fa-solid fa-check-circle text-green-500");
                 loadTeams();
             } else {
                 showPopup("แจ้งเตือน", res.message || "เกิดข้อผิดพลาด", "fa-solid fa-circle-exclamation text-orange-500");
@@ -306,12 +333,11 @@
             }
         }
 
-        // --- Page 3 : All Teams & Modals ---
         async function loadTeams() {
-            document.getElementById('all-teams-container').innerHTML = '<div class="text-center p-4"><span class="loader border-secondary"></span></div>';
+            document.getElementById('all-teams-container').innerHTML = '<div class="text-center p-4"><span class="loader loader-blue"></span></div>';
             const res = await apiCall('getTeams');
             if (res && res.status === 'success') {
-                globalTeams = res.data.reverse(); // ใหม่ล่าสุดขึ้นก่อน
+                globalTeams = res.data.reverse();
                 renderTeams();
             }
         }
@@ -328,16 +354,14 @@
             }
 
             globalTeams.forEach((team, idx) => {
-                // คำนวณจำนวนลูกทีม
                 let subCount = 0;
                 ['Sub1', 'Sub2', 'Sub3', 'Sub4'].forEach(k => { if(team[k]) subCount++; });
 
-                // การ์ดสำหรับหน้าจัดการ (เพิ่มลูกทีม) - แสดงแค่ 5 ทีมล่าสุด
                 if (idx < 5) {
                     recentContainer.innerHTML += `
                         <div class="bg-white p-4 rounded-3xl shadow-sm border border-softpink">
                             <div class="flex justify-between items-center mb-2">
-                                <span class="font-bold text-primary text-sm truncate w-3/4"><i class="fa-solid fa-crown text-yellow-400 mr-1"></i> ${team.HeadEmail}</span>
+                                <span class="font-bold text-primary text-sm truncate w-3/4"><i class="fa-solid fa-star text-yellow-400 mr-1"></i> ${team.HeadEmail}</span>
                                 <span class="text-[10px] bg-softblue text-secondary px-2 py-1 rounded-full">${subCount}/4</span>
                             </div>
                             ${subCount < 4 ? `
@@ -349,11 +373,10 @@
                     `;
                 }
 
-                // การ์ดสำหรับหน้าทีมทั้งหมด
                 allContainer.innerHTML += `
                     <div onclick="openTeamModal('${team.ID}')" class="bg-white p-4 rounded-3xl shadow-sm flex justify-between items-center cursor-pointer hover:bg-softpink/30 transition">
                         <div>
-                            <p class="font-medium text-sm text-gray-700"><i class="fa-solid fa-crown text-yellow-400 mr-1"></i> ${team.HeadEmail}</p>
+                            <p class="font-medium text-sm text-gray-700"><i class="fa-solid fa-star text-yellow-400 mr-1"></i> ${team.HeadEmail}</p>
                             <p class="text-[10px] text-gray-400 mt-1">แอพ: ${team.AppName} | ผู้ขาย: ${team.Seller}</p>
                         </div>
                         <i class="fa-solid fa-chevron-right text-gray-300"></i>
@@ -382,7 +405,7 @@
                     <p class="text-xs text-gray-500">ชื่อแอพ: <span class="text-gray-800">${team.AppName}</span></p>
                     <p class="text-xs text-gray-500">ผู้ขาย: <span class="text-gray-800">${team.Seller}</span></p>
                 </div>
-                <div class="mb-2"><p class="font-medium text-primary"><i class="fa-solid fa-crown text-yellow-400 mr-1"></i> ${team.HeadEmail} (หัวหน้า)</p></div>
+                <div class="mb-2"><p class="font-medium text-primary"><i class="fa-solid fa-star text-yellow-400 mr-1"></i> ${team.HeadEmail} (หัวหน้า)</p></div>
                 ${subsHtml || '<p class="text-xs text-gray-400 ml-5">ยังไม่มีลูกทีม</p>'}
             `;
 
@@ -402,7 +425,6 @@
             document.getElementById('team-modal').classList.remove('flex');
         }
 
-        // --- Common Utils ---
         function showPopup(title, msg, iconClass) {
             document.getElementById('popup-icon').className = `text-5xl mb-4 ${iconClass}`;
             document.getElementById('popup-title').innerText = title;
